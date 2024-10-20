@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            gap: 5px;
+            margin: 20px auto;
+        }
+        .sudoku-grid input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sudoku Solver</h1>
+    <form action="/solve" method="post">
+        <div class="sudoku-grid">
+            {% for i in range(9) %}
+                {% for j in range(9) %}
+                    <input type="text" name="cell{{i}}{{j}}" maxlength="1" pattern="[0-9]*" value="{{ sudoku[i][j] }}">
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <button type="submit">Solve</button>
+    </form>
+
+</body>
+</html>
